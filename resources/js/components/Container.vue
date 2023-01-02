@@ -5,12 +5,14 @@
         <Sidebar :user="user" />
         <!-- Content Wrapper. Contains page content -->
         <div class="content-wrapper">
-            <slot name="breadcrumbs"></slot>
+            <!-- <slot name="breadcrumbs"></slot> -->
             <!-- Main content -->
             <section class="content">
                 <slot name="content"></slot>
             </section>
             <!-- /.content -->
+
+            <!-- <CustomerTable /> -->
         </div>
         <Footer />
     </div>
@@ -20,6 +22,9 @@
 import Navbar from './global/Navbar'
 import Sidebar from './global/Sidebar'
 import Footer from './global/Footer'
+// import CustomerTable from './customers/Customer'
+
+
 export default {
     name: "Container",
     props: ['user', 'breadcrumbs', 'domain'],

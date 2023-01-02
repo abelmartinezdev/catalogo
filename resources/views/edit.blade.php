@@ -11,7 +11,14 @@
     ];
 @endphp
 
-<Customer :user="{{ auth()->user()->tojson() }}" domain="{{ env('APP_URL') }}">
+@if (session('ok'))
+    <div class="alert alert-success">
+        {{ session('ok') }}
+    </div>
+@endif
+
+<Customeredit :customer="{{$customer}}" :user="{{ auth()->user()->tojson() }}" domain="{{ env('APP_URL') }}">
    
-</Customer>
+</Customeredit>
+
 @endsection

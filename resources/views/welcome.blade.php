@@ -70,15 +70,6 @@
                     @endauth
                 </div>
             @endif
-
-            <div class="content">
-
-                <div class="title m-b-md">
-                    Laravel + Vue + AdminLte Starter
-                </div>
-
-                <img class="img-fluid" src="{{ url('assets/images/starter.png') }}">
-            </div>
         </div>
     </body>
 </html>

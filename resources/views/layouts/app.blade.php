@@ -38,14 +38,8 @@
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
     <div class="wrapper" id="app">
-        <Container :user="{{ auth()->user()->tojson() }}" domain="{{ env('APP_URL') }}">
-            <template v-slot:breadcrumbs>
-                @include('partials.breadcrumbs', ['title' => $title ?? '', 'items' => $breadcrumbs ?? []])
-            </template>
-            <template v-slot:content>
-                @yield('content')
-            </template>
-        </Container>
+        {{-- @include('partials.breadcrumbs', ['title' => $title ?? '', 'items' => $breadcrumbs ?? []]) --}}
+
     </div>
     
 </body>
