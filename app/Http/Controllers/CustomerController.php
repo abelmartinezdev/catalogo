@@ -43,6 +43,28 @@ class CustomerController extends Controller
         
         $request->validate([
             'rfc' => 'required|unique:customers,id,'.$customer->id,
+            'type' => 'required',
+            'name' => 'required',
+            'first_lastname' => 'required',
+            'second_lastname' => 'required',
+            'social_reason' => 'required',
+            'rfc' => 'required',
+            'uso_cfdi' => 'required',
+            'status' => 'required',
+            'contact' => 'required',
+            'phone' => 'required',
+            'mobile' => 'required',
+            'email' => 'required',
+            'observations' => 'required',
+            'country' => 'required',
+            'state' => 'required',
+            'municipality' => 'required',
+            'city' => 'required',
+            'postal_code' => 'required',
+            'suburb' => 'required',
+            'street' => 'required',
+            'ext_num' => 'required',
+            'int_num' => 'required',
         ]);
         
         $customer = Customer::find($customer->id);
@@ -70,7 +92,7 @@ class CustomerController extends Controller
         $customer->int_num = $request->int_num;
         $customer->save();
 
-        return response()->json(['status'=>'true']);
+        return ['message' => 'Contacto creado correctamente!'];
         
     }
 
@@ -81,6 +103,29 @@ class CustomerController extends Controller
     public function store(Request $request){
         $request->validate([
             'rfc' => 'required|unique:customers',
+            'type' => 'required',
+            'name' => 'required',
+            'first_lastname' => 'required',
+            'second_lastname' => 'required',
+            'social_reason' => 'required',
+            'rfc' => 'required',
+            'uso_cfdi' => 'required',
+            'status' => 'required',
+            'contact' => 'required',
+            'phone' => 'required',
+            'mobile' => 'required',
+            'email' => 'required',
+            'observations' => 'required',
+            'country' => 'required',
+            'state' => 'required',
+            'municipality' => 'required',
+            'city' => 'required',
+            'postal_code' => 'required',
+            'suburb' => 'required',
+            'street' => 'required',
+            'ext_num' => 'required',
+            'int_num' => 'required',
+
         ]);
 
         $customer = new Customer;
@@ -109,7 +154,7 @@ class CustomerController extends Controller
         $customer->int_num = $request->int_num;
         $customer->save();
 
-        return response()->json(['status'=>'true']);
+        return ['message' => 'Contacto actualizado correctamente!'];
     }
 
     public function destroy(Customer $customer){

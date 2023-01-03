@@ -24,7 +24,7 @@
                                 <b-form-input
                                     v-model="form.rfc"
                                     id="inline-form-input-name"
-                                    placeholder="Doe"
+
                                     ></b-form-input>
                                 </div>
                                 <div class="col-md-3">   
@@ -40,11 +40,7 @@
                                 readonly
                                 v-model="form.rfc"
                                 id="inline-form-input-name"
-                                class="form-control"
-                                placeholder="Doe"
                                 ></b-form-input>
-                                
-                        
                       </div>
                       <div class="form-group col-md-3">
                         <b-form-group id="input-group-3" label="Tipo de persona" label-for="input-3" v-if="show">
@@ -61,7 +57,7 @@
                             <b-form-input
                             v-model="form.name"
                             id="inline-form-input-name"
-                            class="form-control"
+                            :class="hasError('name') ? 'is-invalid' : ''"
                             placeholder="Jane"
                             ></b-form-input>
                         </div>
@@ -70,8 +66,7 @@
                             <b-form-input
                                 v-model="form.first_lastname"
                                 id="inline-form-input-name"
-                                class="form-control"
-                                placeholder="Doe"
+                                :class="hasError('first_lastname') ? 'is-invalid' : ''"
                                 ></b-form-input>
                         </div>
                         <div class="form-group col-md-3" v-if="fisica">
@@ -79,7 +74,7 @@
                             <b-form-input
                             v-model="form.second_lastname"
                             id="inline-form-input-name"
-                            class="form-control"
+                            :class="hasError('second_lastname') ? 'is-invalid' : ''"
                             placeholder="Jane"
                             ></b-form-input>
                         </div>
@@ -88,8 +83,7 @@
                             <b-form-input
                                 v-model="form.social_reason"
                                 id="inline-form-input-name"
-                                class="form-control"
-                                placeholder="Doe"
+                                :class="hasError('social_reason') ? 'is-invalid' : ''"
                                 ></b-form-input>
                         </div>
                         <div class="form-group col-md-3" v-if="show">
@@ -97,8 +91,7 @@
                             <b-form-input
                                 v-model="form.uso_cfdi"
                                 id="inline-form-input-name"
-                                class="form-control"
-                                placeholder="Doe"
+                                :class="hasError('uso_cfdi') ? 'is-invalid' : ''"
                                 ></b-form-input>
                         </div>
                         <div class="form-group col-md-3" v-if="show">
@@ -117,8 +110,7 @@
                             <b-form-input
                                 v-model="form.contact"
                                 id="inline-form-input-name"
-                                class="form-control"
-                                placeholder="Doe"
+                                :class="hasError('contact') ? 'is-invalid' : ''"
                                 ></b-form-input>
                         </div>
                         <div class="form-group col-md-3" v-if="show">
@@ -126,8 +118,7 @@
                             <b-form-input
                                 v-model="form.phone"
                                 id="inline-form-input-name"
-                                class="form-control"
-                                placeholder="Doe"
+                                :class="hasError('phone') ? 'is-invalid' : ''"
                                 ></b-form-input>
                         </div>
                         <div class="form-group col-md-3" v-if="show">
@@ -135,8 +126,7 @@
                             <b-form-input
                                 v-model="form.mobile"
                                 id="inline-form-input-name"
-                                class="form-control"
-                                placeholder="Doe"
+                                :class="hasError('mobile') ? 'is-invalid' : ''"
                                 ></b-form-input>
                         </div>
                         <div class="form-group col-md-3" v-if="show">
@@ -144,8 +134,7 @@
                             <b-form-input
                                 v-model="form.email"
                                 id="inline-form-input-name"
-                                class="form-control"
-                                placeholder="Doe"
+                                :class="hasError('email') ? 'is-invalid' : ''"
                                 type="email"
                                 ></b-form-input>
                         </div>
@@ -154,8 +143,7 @@
                             <b-form-textarea
                                 v-model="form.observations"
                                 id="inline-form-input-name"
-                                class="form-control"
-                                placeholder="Doe"
+                                :class="hasError('observations') ? 'is-invalid' : ''"
                                 type="textarea"
                                 ></b-form-textarea>
                         </div>
@@ -164,8 +152,7 @@
                             <b-form-input
                                 v-model="form.country"
                                 id="inline-form-input-name"
-                                class="form-control"
-                                placeholder="Doe"
+                                :class="hasError('country') ? 'is-invalid' : ''"
                                 ></b-form-input>
                         </div>
                         <div class="form-group col-md-3" v-if="show">
@@ -173,8 +160,7 @@
                             <b-form-input
                                 v-model="form.state"
                                 id="inline-form-input-name"
-                                class="form-control"
-                                placeholder="Doe"
+                                :class="hasError('state') ? 'is-invalid' : ''"
                                 ></b-form-input>
                         </div>
                         <div class="form-group col-md-3" v-if="show">
@@ -182,8 +168,7 @@
                             <b-form-input
                                 v-model="form.municipality"
                                 id="inline-form-input-name"
-                                class="form-control"
-                                placeholder="Doe"
+                                :class="hasError('municipality') ? 'is-invalid' : ''"
                                 ></b-form-input>
                         </div>
                         <div class="form-group col-md-3" v-if="show">
@@ -191,8 +176,7 @@
                             <b-form-input
                                 v-model="form.city"
                                 id="inline-form-input-name"
-                                class="form-control"
-                                placeholder="Doe"
+                                :class="hasError('city') ? 'is-invalid' : ''"
                                 ></b-form-input>
                         </div>
                         <div class="form-group col-md-2" v-if="show">
@@ -200,8 +184,7 @@
                             <b-form-input
                                 v-model="form.postal_code"
                                 id="inline-form-input-name"
-                                class="form-control"
-                                placeholder="Doe"
+                                :class="hasError('postal_code') ? 'is-invalid' : ''"
                                 ></b-form-input>
                         </div>
                         <div class="form-group col-md-3" v-if="show">
@@ -209,8 +192,7 @@
                             <b-form-input
                                 v-model="form.suburb"
                                 id="inline-form-input-name"
-                                class="form-control"
-                                placeholder="Doe"
+                                :class="hasError('suburb') ? 'is-invalid' : ''"
                                 ></b-form-input>
                         </div>
                         <div class="form-group col-md-3" v-if="show">
@@ -218,8 +200,7 @@
                             <b-form-input
                                 v-model="form.street"
                                 id="inline-form-input-name"
-                                class="form-control"
-                                placeholder="Doe"
+                                :class="hasError('street') ? 'is-invalid' : ''"
                                 ></b-form-input>
                         </div>
                         <div class="form-group col-md-2" v-if="show">
@@ -227,8 +208,7 @@
                             <b-form-input
                                 v-model="form.ext_num"
                                 id="inline-form-input-name"
-                                class="form-control"
-                                placeholder="Doe"
+                                :class="hasError('ext_num') ? 'is-invalid' : ''"
                                 ></b-form-input>
                         </div>
                         <div class="form-group col-md-2" v-if="show">
@@ -236,8 +216,7 @@
                             <b-form-input
                                 v-model="form.int_num"
                                 id="inline-form-input-name"
-                                class="form-control"
-                                placeholder="Doe"
+                                :class="hasError('int_num') ? 'is-invalid' : ''"
                                 ></b-form-input>
                         </div>
                         
@@ -311,6 +290,9 @@
         fisica: false,
         moral: false,
         no_rfc: true,
+        success: false,
+        error: false,
+        errors: {},
       };
     },
     methods: {
@@ -343,49 +325,20 @@
         });
       },
       onSubmit(event) {
-          event.preventDefault()
+          event.preventDefault();
         let el = this;
 
           axios.post('/customers/store', this.form)
           .then(function (response) {
-              if(response.status == 200){
-                    Vue.swal('Cliente creado correctamente');
-
-                    el.form.type = '';
-                    el.form.id = '';
-                    el.form.name = '';
-                    el.form.first_lastname = '';
-                    el.form.second_lastname = '';
-                    el.form.social_reason = '';
-                    el.form.rfc = '';
-                    el.form.uso_cfdi = '';
-                    el.form.status = '';
-                    el.form.contact = '';
-                    el.form.phone = '';
-                    el.form.mobile = '';
-                    el.form.email = '';
-                    el.form.observations = '';
-                    el.form.country = '';
-                    el.form.state = '';
-                    el.form.municipality = '';
-                    el.form.city = '';
-                    
-                    el.form.postal_code = '';
-                    el.form.suburb = '';
-                    el.form.street = '';
-                    el.form.ext_num = '',
-                    el.form.int_num = '';
-
-                    el.show = false;
-                    el.type = null;
-                    
-                    el.fisica = false;
-                    el.moral = false;
-                    el.no_rfc = true;
-              }
+                el.onSuccess(response.data.message);
           })
           .catch(function (error) {
-              console.log(error);
+            if(error.response.status == 422){
+                el.setErrors(error.response.data.errors);
+            }else{
+                el.onFailure(error.response.data.message);
+            }
+            //   console.log(error);
           });
   
       },
@@ -397,6 +350,52 @@
         else
             this.moral = true;
 
+      },
+      onSuccess(message){
+        this.success = true;
+        el.form.type = '';
+        el.form.id = '';
+        el.form.name = '';
+        el.form.first_lastname = '';
+        el.form.second_lastname = '';
+        el.form.social_reason = '';
+        el.form.rfc = '';
+        el.form.uso_cfdi = '';
+        el.form.status = '';
+        el.form.contact = '';
+        el.form.phone = '';
+        el.form.mobile = '';
+        el.form.email = '';
+        el.form.observations = '';
+        el.form.country = '';
+        el.form.state = '';
+        el.form.municipality = '';
+        el.form.city = '';
+
+        el.form.postal_code = '';
+        el.form.suburb = '';
+        el.form.street = '';
+        el.form.ext_num = '',
+        el.form.int_num = '';
+
+        el.show = false;
+        el.type = null;
+
+        el.fisica = false;
+        el.moral = false;
+        el.no_rfc = true;
+        Vue.swal(message);
+      },
+      onFailure(message){
+
+        this.error = true;
+      },
+      setErrors(errors){
+        console.log(errors);
+        this.errors = errors;
+      },
+      hasError(fieldName){
+        return (fieldName in this.errors);
       }
     },
   };

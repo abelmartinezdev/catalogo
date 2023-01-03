@@ -39,7 +39,7 @@
 <body class="hold-transition sidebar-mini layout-fixed">
     <div class="wrapper" id="app">
         {{-- @include('partials.breadcrumbs', ['title' => $title ?? '', 'items' => $breadcrumbs ?? []]) --}}
-
+        @yield('content')
     </div>
     
 </body>

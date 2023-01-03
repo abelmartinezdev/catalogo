@@ -22,43 +22,40 @@
                             v-model="form.type"
                             :options="types"
                             required
+                            @change="onChange($event)"
                             ></b-form-select>
                         </b-form-group>
                     </div>
-                    <div class="form-group col-md-3">
+                    <div class="form-group col-md-3" v-if="fisica">
                         <label for="inline-form-input-name">Nombre</label>
                         <b-form-input
                         v-model="form.name"
                         id="inline-form-input-name"
-                        class="form-control"
-                        placeholder="Jane"
+                        :class="hasError('name') ? 'is-invalid' : ''"
                         ></b-form-input>
                     </div>
-                    <div class="form-group col-md-3">
+                    <div class="form-group col-md-3" v-if="fisica">
                         <label for="inputPassword4">Apellido paterno</label>
                         <b-form-input
                             v-model="form.first_lastname"
                             id="inline-form-input-name"
-                            class="form-control"
-                            placeholder="Doe"
+                            :class="hasError('first_lastname') ? 'is-invalid' : ''"
                             ></b-form-input>
                     </div>
-                    <div class="form-group col-md-3">
+                    <div class="form-group col-md-3" v-if="fisica">
                         <label for="inline-form-input-name">Apellido materno</label>
                         <b-form-input
                         v-model="form.second_lastname"
                         id="inline-form-input-name"
-                        class="form-control"
-                        placeholder="Jane"
+                        :class="hasError('second_lastname') ? 'is-invalid' : ''"
                         ></b-form-input>
                     </div>
-                    <div class="form-group col-md-3">
+                    <div class="form-group col-md-3" v-if="moral">
                         <label for="inputPassword4">Razón social</label>
                         <b-form-input
                             v-model="form.social_reason"
                             id="inline-form-input-name"
-                            class="form-control"
-                            placeholder="Doe"
+                            :class="hasError('social_reasn') ? 'is-invalid' : ''"
                             ></b-form-input>
                     </div>
                     <div class="form-group col-md-3">
@@ -66,8 +63,7 @@
                         <b-form-input
                             v-model="form.rfc"
                             id="inline-form-input-name"
-                            class="form-control"
-                            placeholder="Doe"
+                            :class="hasError('rfc') ? 'is-invalid' : ''"
                             ></b-form-input>
                     </div>
                     <div class="form-group col-md-3">
@@ -75,8 +71,7 @@
                         <b-form-input
                             v-model="form.uso_cfdi"
                             id="inline-form-input-name"
-                            class="form-control"
-                            placeholder="Doe"
+                            :class="hasError('uso_cfdi') ? 'is-invalid' : ''"
                             ></b-form-input>
                     </div>
                     <div class="form-group col-md-3">
@@ -95,8 +90,7 @@
                         <b-form-input
                             v-model="form.contact"
                             id="inline-form-input-name"
-                            class="form-control"
-                            placeholder="Doe"
+                            :class="hasError('contact') ? 'is-invalid' : ''"
                             ></b-form-input>
                     </div>
                     <div class="form-group col-md-3">
@@ -104,8 +98,7 @@
                         <b-form-input
                             v-model="form.phone"
                             id="inline-form-input-name"
-                            class="form-control"
-                            placeholder="Doe"
+                            :class="hasError('phone') ? 'is-invalid' : ''"
                             ></b-form-input>
                     </div>
                     <div class="form-group col-md-3">
@@ -113,8 +106,7 @@
                         <b-form-input
                             v-model="form.mobile"
                             id="inline-form-input-name"
-                            class="form-control"
-                            placeholder="Doe"
+                            :class="hasError('mobile') ? 'is-invalid' : ''"
                             ></b-form-input>
                     </div>
                     <div class="form-group col-md-3">
@@ -122,8 +114,7 @@
                         <b-form-input
                             v-model="form.email"
                             id="inline-form-input-name"
-                            class="form-control"
-                            placeholder="Doe"
+                            :class="hasError('email') ? 'is-invalid' : ''"
                             type="email"
                             ></b-form-input>
                     </div>
@@ -132,8 +123,7 @@
                         <b-form-textarea
                             v-model="form.observations"
                             id="inline-form-input-name"
-                            class="form-control"
-                            placeholder="Doe"
+                            :class="hasError('observations') ? 'is-invalid' : ''"
                             type="textarea"
                             ></b-form-textarea>
                     </div>
@@ -142,8 +132,7 @@
                         <b-form-input
                             v-model="form.country"
                             id="inline-form-input-name"
-                            class="form-control"
-                            placeholder="Doe"
+                            :class="hasError('country') ? 'is-invalid' : ''"
                             ></b-form-input>
                     </div>
                     <div class="form-group col-md-3">
@@ -151,8 +140,7 @@
                         <b-form-input
                             v-model="form.state"
                             id="inline-form-input-name"
-                            class="form-control"
-                            placeholder="Doe"
+                            :class="hasError('state') ? 'is-invalid' : ''"
                             ></b-form-input>
                     </div>
                     <div class="form-group col-md-3">
@@ -160,8 +148,7 @@
                         <b-form-input
                             v-model="form.municipality"
                             id="inline-form-input-name"
-                            class="form-control"
-                            placeholder="Doe"
+                            :class="hasError('municipality') ? 'is-invalid' : ''"
                             ></b-form-input>
                     </div>
                     <div class="form-group col-md-3">
@@ -169,8 +156,7 @@
                         <b-form-input
                             v-model="form.city"
                             id="inline-form-input-name"
-                            class="form-control"
-                            placeholder="Doe"
+                            :class="hasError('city') ? 'is-invalid' : ''"
                             ></b-form-input>
                     </div>
                     <div class="form-group col-md-2">
@@ -178,8 +164,7 @@
                         <b-form-input
                             v-model="form.postal_code"
                             id="inline-form-input-name"
-                            class="form-control"
-                            placeholder="Doe"
+                            :class="hasError('postal_code') ? 'is-invalid' : ''"
                             ></b-form-input>
                     </div>
                     <div class="form-group col-md-3">
@@ -187,8 +172,7 @@
                         <b-form-input
                             v-model="form.suburb"
                             id="inline-form-input-name"
-                            class="form-control"
-                            placeholder="Doe"
+                            :class="hasError('suburb') ? 'is-invalid' : ''"
                             ></b-form-input>
                     </div>
                     <div class="form-group col-md-3">
@@ -196,8 +180,7 @@
                         <b-form-input
                             v-model="form.street"
                             id="inline-form-input-name"
-                            class="form-control"
-                            placeholder="Doe"
+                            :class="hasError('street') ? 'is-invalid' : ''"
                             ></b-form-input>
                     </div>
                     <div class="form-group col-md-2">
@@ -205,8 +188,7 @@
                         <b-form-input
                             v-model="form.ext_num"
                             id="inline-form-input-name"
-                            class="form-control"
-                            placeholder="Doe"
+                            :class="hasError('ext_num') ? 'is-invalid' : ''"
                             ></b-form-input>
                     </div>
                     <div class="form-group col-md-2">
@@ -214,8 +196,7 @@
                         <b-form-input
                             v-model="form.int_num"
                             id="inline-form-input-name"
-                            class="form-control"
-                            placeholder="Doe"
+                            :class="hasError('int_num') ? 'is-invalid' : ''"
                             ></b-form-input>
                     </div>
                     
@@ -256,34 +237,38 @@ export default {
 
   data() {
     return {
-      form: {
-        id: null,
-        type: null,
-        name: null,
-        first_lastname: null,
-        second_lastname: null,
-        social_reason: null,
-        rfc: null,
-        uso_cfdi: null,
-        status: null,
-        contact: null,
-        phone: null,
-        mobile: null,
-        email: null,
-        observations: null,
-        country: null,
-        state: null,
-        municipality: null,
-        postal_code: null,
-        suburb: null,
-        street: null,
-        ext_num: null,
-        int_num: null,
-      },
-      show: true,
-      status: [{ text: 'Elige 1', value: null }, 'activo', 'inactivo', 'baja'],
-      types: [{ text: 'Elige 1', value: null }, 'fisica', 'moral'],
-      
+        form: {
+            id: null,
+            type: null,
+            name: null,
+            first_lastname: null,
+            second_lastname: null,
+            social_reason: null,
+            rfc: null,
+            uso_cfdi: null,
+            status: null,
+            contact: null,
+            phone: null,
+            mobile: null,
+            email: null,
+            observations: null,
+            country: null,
+            state: null,
+            municipality: null,
+            postal_code: null,
+            suburb: null,
+            street: null,
+            ext_num: null,
+            int_num: null,
+        },
+        show: true,
+        status: [{ text: 'Elige 1', value: null }, 'activo', 'inactivo', 'baja'],
+        types: [{ text: 'Elige 1', value: null }, 'fisica', 'moral'],
+        success: false,
+        error: false,
+        errors: {},
+        fisica: false,
+        moral: false,
     };
   },
 
@@ -323,26 +308,58 @@ export default {
         this.form.street = this.data.street,
         this.form.ext_num = this.data.ext_num,
         this.form.int_num = this.data.int_num
+
+        if(this.form.type == 'fisica'){
+            this.fisica = true;
+        }else{
+            this.moral = true;
+        }
     });
   },
 
   methods: {
     onSubmit(event) {
-        event.preventDefault()
-        // alert(JSON.stringify(this.form))
+        event.preventDefault();
+        let el = this;
         axios.put('/customers/'+this.form.id+'/update', this.form)
         .then(function (response) {
-            console.log("respueston");
-            console.log(response.status);
-            if(response.status == 200){
-                Vue.swal('Cliente actualizado correctamente');
-            }
+            el.onSuccess(response.data.message);
         })
         .catch(function (error) {
-            console.log(error);
+            if(error.response.status == 422){
+                el.setErrors(error.response.data.errors);
+            }else{
+                el.onFailure(error.response.data.message);
+            }
         });
 
     },
+    onSuccess(message){
+        this.success = true;
+       
+        Vue.swal(message);
+    },
+    onFailure(message){
+        this.error = true;
+    },
+    setErrors(errors){
+        console.log(errors);
+        this.errors = errors;
+    },
+    hasError(fieldName){
+        return (fieldName in this.errors);
+    },
+    onChange(event){
+        console.log(this.form.type);
+        this.show = true;
+        if(this.form.type == 'fisica'){
+            this.moral = false;
+            this.fisica = true;
+        }else{
+            this.moral = true;
+            this.fisica = false;
+        }
+      },
   },
 };
 </script>
